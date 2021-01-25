@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        string rawReturnedDate = Console.ReadLine();
+        string[] processedReturnedDate = rawReturnedDate.Split(' ');
+        int[] returnedDate = Array.ConvertAll(processedReturnedDate, int.Parse);
+        
+        string rawDueDate = Console.ReadLine();
+        string[] processedDueDate = rawDueDate.Split(' ');
+        int[] dueDate = Array.ConvertAll(processedDueDate, int.Parse);
+        
+        int fine = 0;
+        
+        if(returnedDate[0] > dueDate[0] && returnedDate[1] == dueDate[1]){
+            fine = 15 * (returnedDate[0] - dueDate[0]);
+        }
+        else if(returnedDate[1] > dueDate[1] && returnedDate[2] == dueDate[2]){
+            fine = 500 * (returnedDate[1] - dueDate[1]);
+        }
+        else if(returnedDate[2] > dueDate[2]){
+            fine = 10000;
+        }
+        
+        Console.WriteLine(fine);
+    }
+}
